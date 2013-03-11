@@ -1,0 +1,42 @@
+\BOOKMARK [1][-]{section.1}{MVC}{}% 1
+\BOOKMARK [1][-]{section.2}{Start from an example}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Vew heander}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{View implementation}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Model implemtation}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Objective C}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Syntax, Language}{section.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Strong vs Weak}{subsection.3.1}% 8
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Comma vs Colon}{subsection.3.1}% 9
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Initializers}{subsection.3.1}% 10
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Dynamic Binding}{subsection.3.1}% 11
+\BOOKMARK [3][-]{subsubsection.3.1.5}{Introsepction}{subsection.3.1}% 12
+\BOOKMARK [1][-]{section.4}{Foundation Framework}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{NSObject}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.2}{NSString}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.3}{NSMutableString}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.4}{NSNumber}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.5}{NSValue}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.6}{NSData}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.7}{NSArray}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.8}{NSMutableArray}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.9}{NSDictionary}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.10}{NSSet}{section.4}% 23
+\BOOKMARK [2][-]{subsection.4.11}{NSMutableSet}{section.4}% 24
+\BOOKMARK [2][-]{subsection.4.12}{NSOrderedset}{section.4}% 25
+\BOOKMARK [2][-]{subsection.4.13}{NSMutableOrderedSet}{section.4}% 26
+\BOOKMARK [2][-]{subsection.4.14}{Enumeration}{section.4}% 27
+\BOOKMARK [3][-]{subsubsection.4.14.1}{array}{subsection.4.14}% 28
+\BOOKMARK [3][-]{subsubsection.4.14.2}{dictionary}{subsection.4.14}% 29
+\BOOKMARK [2][-]{subsection.4.15}{Property List}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.16}{NSUserDefaults}{section.4}% 31
+\BOOKMARK [2][-]{subsection.4.17}{Continue our example}{section.4}% 32
+\BOOKMARK [1][-]{section.5}{Views}{}% 33
+\BOOKMARK [2][-]{subsection.5.1}{CGFloat, CGPoint,, CGSize, CGRect}{section.5}% 34
+\BOOKMARK [2][-]{subsection.5.2}{Coordinates}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.3}{Drawing is fun}{section.5}% 36
+\BOOKMARK [2][-]{subsection.5.4}{Drawing Text}{section.5}% 37
+\BOOKMARK [2][-]{subsection.5.5}{Drawing Image}{section.5}% 38
+\BOOKMARK [2][-]{subsection.5.6}{Enumeration}{section.5}% 39
+\BOOKMARK [2][-]{subsection.5.7}{Enumeration}{section.5}% 40
+\BOOKMARK [2][-]{subsection.5.8}{Enumeration}{section.5}% 41
+\BOOKMARK [2][-]{subsection.5.9}{}{section.5}% 42

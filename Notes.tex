@@ -1,0 +1,546 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry,listings}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+
+\title{iOS development Learning Note}
+\author{Rui Zhao}
+%\date{}							% Activate to display a given date or no date
+\usepackage{ifxetex}
+%------------------Font specification-------------------%
+% If you want to use font other than the default one,
+% you MUST use XeLaTeX to compile.
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage{xunicode}
+  % Use Monaco as default font, change down below (if you wish).
+  \newfontfamily{\monaco}{Monaco} % Replace "Monaco" with another font name.
+\else
+  \newcommand{\monaco}{\ }
+\fi
+%-------------------------------------------------------%
+\usepackage{color,xcolor}
+\usepackage{listings}
+\lstloadlanguages{[Objective]C}
+\definecolor{nsclass}{RGB}{124,32,176}
+\definecolor{atnotation}{RGB}{204,0,164}
+\definecolor{import}{RGB}{128,70,30}
+\definecolor{comment}{RGB}{0,140,0}
+\definecolor{string}{RGB}{229,0,0}
+\definecolor{method}{RGB}{70,0,134}
+\definecolor{class}{RGB}{59,131,138}
+\definecolor{custommethod}{RGB}{32,90,95}
+\definecolor{number}{RGB}{56,0,225}
+\definecolor{customgray}{RGB}{211,211,211}
+\lstset{language=[Objective]C,tabsize=4, keepspaces=false,
+    xleftmargin=0em,xrightmargin=-1em, aboveskip=1em, % Margin adjustment
+    backgroundcolor=\color{customgray},    % Background color (Default:gray)
+    frame=none,                            % Frame not needed
+    breakindent=22pt,
+    numbers=left,stepnumber=1,numberstyle=\tiny\color{black}\monaco,
+    basicstyle=\fontsize{9pt}{1em}\selectfont\monaco,
+   % commentstyle=\fontsize{9pt}{0.75em}\selectfont\monaco\color{comment},
+   commentstyle=\color{comment},
+    showspaces=false,
+    flexiblecolumns=true,
+    breaklines=true, breakautoindent=true,breakindent=4em,
+    escapeinside={/*@}{@*/},
+    morecomment=[s][\color{string}]{@"}{"},
+    morecomment=[l][\color{import}]{\#},
+    morecomment=**[s][\color{nsclass}]{NS}{];},
+    morecomment=**[s][\color{nsclass}]{UI}{];},
+    morecomment=**[s][\color{nsclass}]{NS}{(},
+    morecomment=**[s][\color{nsclass}]{UI}{)},
+    morecomment=**[s][\color{nsclass}]{UI}{*},
+    morecomment=**[s][\color{nsclass}]{NS}{*},
+    morecomment=*[s][\color{nsclass}]{UI}{\ },
+    morecomment=*[s][\color{nsclass}]{NS}{\ },
+}
+% Down below, you can add your custom class names / method names as presented
+% in your source code.
+% For example, you have two custom class names called User and Person.
+% You should add in the list User, Person
+% The list of names should be seperated by commas, and no quotation
+% marks are required.
+\lstset{emph=[1]{  % <--Add your own Class Names before the percentage mark
+       },emphstyle=[1]{\color{class}},
+       moreemph=[5]{ % <--Add your own Method Names before the percentage mark
+       },emphstyle=[5]{\color{method}},
+}
+\lstset{
+    emph=[3]{@implementation,@synthesize, @interface, @property, @dynamic,
+    @end, break, case, catch, class, copy, const, __finally, __exception,
+    __try, const_cast, continue, private, public, protected, __declspec,
+    default, delete, deprecated, dllexport, dllimport, do, dynamic_cast, else,
+    enum, explicit, extern, if, for, friend, getter, goto, inline, mutable,
+    naked, namespace, new, nil, NO, noinline, nonatomic, noreturn, nothrow,
+    NULL, readonly, readwrite, register, reinterpret_cast, retain, return,
+    SEL, selectany, self, setter, sizeof, static, static_cast, struct, super,
+    switch, template, thread, throw, true, false, try, typedef, typeid,
+    typename, union, using, uuid, virtual, void, volatile, whcar_t, while, YES,
+    ATOM, BOOL, BOOLEAN, BYTE, CHAR, COLORREF, DWORD, DWORDLONG, DWORD_PTR,
+    DWORD32,DWORD64, FLOAT, HACCEL, HALF_PTR, HANDLE, HBITMAP, HBRUSH,
+    HCOLORSPACE, HCONV, HCONVLIST, HCURSOR, HDC, HDDEDATA, HDESK, HDROP,
+    HDWP, HENHMETAFILE, HFILE, HFONT, HGDIOBJ, HGLOBAL, HHOOK, HICON,
+    HINSTANCE, HKEY, HKL, HLOCAL, HMENU, HMETAFILE, HMODULE, HMONITOR,
+    HPALETTE, HPEN, HRESULT, HRGN, HRSRC, HSZ, HWINSTA, HWND, INT, INT_PTR,
+    INT32, INT64, LANGID, LCID, LCTYPE, LGRPID, LONG, LONGLONG, LONG_PTR,
+    LONG32, LONG64, LPARAM, LPBOOL, LPBYTE, LPCOLORREF, LPCSTR, LPCTSTR,
+    LPCVOID, LPCWSTR, LPDWORD, LPHANDLE, LPINT, LPLONG, LPSTR, LPTSTR, LPVOID,
+    LPWORD, LPWSTR, LRESULT, PBOOL, PBOOLEAN, PBYTE, PCHAR, PCSTR, PCTSTR,
+    PCWSTR, PDWORDLONG, PDWORD_PTR, PDWORD32, PDWORD64, PFLOAT, PHALF_PTR,
+    PHANDLE, PHKEY, PINT, PINT_PTR, PINT32, PINT64, PLCID, PLONG, PLONGLONG,
+    PLONG_PTR, PLONG32, PLONG64, POINTER_32, POINTER_64, PSHORT, PSIZE_T,
+    PSSIZE_T, PSTR, PTBYTE, PTCHAR, PTSTR, PUCHAR, PUHALF_PTR, PUINT, PUINT_PTR,
+    PUINT32, PUINT64, PULONG, PULONGLONG, PULONG_PTR, PULONG32, PULONG64, PUSHORT,
+    PVOID, PWCHAR, PWORD, PWSTR, SC_HANDLE, SC_LOCK, SERVICE_STATUS_HANDLE,
+    SHORT, SIZE_T, SSIZE_T, TBYTE, TCHAR, UCHAR, UHALF_PTR, UINT, UINT_PTR,
+    UINT32, UINT64, ULONG, ULONGLONG, ULONG_PTR, ULONG32, ULONG64, USHORT,
+    USN, VOID, WCHAR, WORD, WPARAM, WPARAM, WPARAM, char, bool, short, int,
+    __int32, __int64, __int8, __int16, long, float, double, __wchar_t, clock_t,
+    _complex, _dev_t, _diskfree_t, div_t, ldiv_t, _exception, _EXCEPTION_POINTERS,
+    FILE, _finddata_t, _finddatai64_t, _wfinddata_t, _wfinddatai64_t,
+        __finddata64_t,
+    __wfinddata64_t, _FPIEEE_RECORD, fpos_t, _HEAPINFO, _HFILE, lconv, intptr_t,
+    id, jmp_buf, mbstate_t, _off_t, _onexit_t, _PNH, ptrdiff_t,
+    _purecall_handler, sig_atomic_t, size_t, _stat, __stat64, _stati64,
+    terminate_function, time_t, __time64_t, _timeb, __timeb64, tm, uintptr_t,
+    _utimbuf, va_list, wchar_t, wctrans_t, wctype_t, wint_t, signed
+    },emphstyle=[3]{\color{atnotation}},
+    moreemph=[4]{alloc, init, NSLog, sqrt, pow, cbrt, abs, fabs, powf
+    },emphstyle=[4]{\color{method}}
+}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{MVC}
+Controller has delegate of view. view donÕt own the data they display. controller is the data source. 
+Model wanna ÒtellÓ controller something, controller can listen to model(observation pattern)
+\section{Start from an example}
+
+\subsection{Vew heander}
+\lstset{language=[Objective]C, breakindent=11pt, breaklines=true}
+
+
+\begin{lstlisting}
+@interface CalculatorViewController : UIViewController
+//delegate,more strightforword way, but hide the view code
+@property (weak, nonatomic) IBOutlet UILabel *display;
+@end
+
+\end{lstlisting}
+Objective C support week reference and reference counting. 
+Drag the view to make a delegation is cool, but we can't see the code for view.
+\subsection{View implementation}
+
+\begin{lstlisting}
+//()make it private
+@interface CalculatorViewController ()
+@property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
+@property (nonatomic,strong) CalculatorBrain *brain;
+@end
+
+@implementation CalculatorViewController
+//_display is action location
+@synthesize display = _display;
+@synthesize brain = _brain;
+
+- (CalculatorBrain *) brain {
+    if (!_brain) {
+    //syntax to new
+        _brain = [[CalculatorBrain alloc] init];
+    }
+    return _brain;
+}
+\end{lstlisting}
+make a member property and synthesize it can omit the getter and setter code, but we need to implement the getter if we wanna lazy initialize it. 
+\begin{lstlisting}
+//IBAcion is actually void,id is a pointer to unknow class of object
+- (IBAction)digitPressed:(UIButton *)sender {
+    NSString *digit = sender.currentTitle;
+    //print the debug log
+    NSLog(@"digit pressed = %@", digit);
+    if (self.userIsInTheMiddleOfEnteringANumber) {
+        self.display.text = [self.display.text stringByAppendingString:digit];
+    } else {
+        self.userIsInTheMiddleOfEnteringANumber = YES;
+        self.display.text = digit;
+    }
+    
+}
+- (IBAction)operationPressed:(UIButton *)sender {
+    if (self.userIsInTheMiddleOfEnteringANumber) [self enterPressed];
+    double result = [self.brain performOperation:sender.currentTitle];
+    NSString *resultString = [NSString stringWithFormat:@"%g", result];
+    self.display.text = resultString;
+    
+    
+}
+ // don't need parameter here
+- (IBAction)enterPressed {
+    [self.brain pushOperand:[self.display.text doubleValue]];
+    self.userIsInTheMiddleOfEnteringANumber = NO;
+}
+
+@end
+\end{lstlisting}
+
+\subsection{Model implemtation}
+\begin{lstlisting}
+@interface CalculatorBrain()
+@property (nonatomic, strong) NSMutableArray *operandStack;
+@end
+
+
+@implementation CalculatorBrain
+
+//_opreandStack is the actually name of the location
+@synthesize operandStack = _operandStack;
+
+- (NSMutableArray *) operandStack {
+    if (_operandStack == NULL) {
+        _operandStack = [[NSMutableArray alloc] init];
+    }
+    return _operandStack;
+
+}
+
+- (void) pushOperand:(double) operand{
+    //boxing like java
+    [self.operandStack addObject:[NSNumber numberWithDouble:operand]];
+}
+
+- (double) popOperand {
+    NSNumber *operandObject = [self.operandStack lastObject];
+    if (operandObject) [self.operandStack removeLastObject];
+    return [operandObject doubleValue];
+    
+}
+
+- (double) performOperation:(NSString *) operation{
+    double result = 0;
+    if ([operation isEqualToString:@"+"]) {
+        result = [self popOperand] + [self popOperand];
+    } else if ([@"*" isEqualToString:operation]) {
+        result = [self popOperand] * [self popOperand];
+    }
+    
+    return result;
+}
+
+
+@end
+\end{lstlisting}
+Define a class's public @interface and private @implementation in a .h and .m file respectively and a private @interface to .m file
+\section{Objective C}
+\subsection{Syntax, Language}
+\subsubsection{Strong vs Weak}
+
+strong:keep it in the heap until i don't point to it anymore;
+weak:keep this as long as someone else points to it strongly, strong means ownership, weak means i just wanna get info of you.
+
+\subsubsection{Comma vs Colon}
+comma used when there is indeterminate parameters
+\begin{lstlisting}
+NSLog(@"digit pressed = %@", digit);
+\end{lstlisting} 
+\subsubsection{Initializers} 
+Classes must designate an initializer for subclassers,(the reason is trying to avoid loop initialize) for subclassing reasons, init methods should be typed to return id(not statically typed)
+\begin{lstlisting}
+@implementation MyObject
+
+//designated one. documentation
+- (id) init
+{
+	self = [super init]; //call our super's designated initializer, convention
+	if (self) {
+		//initialize our subclass here
+	}	
+	return self;
+}
+
+-(id) initWithString (NSString *) str
+{
+        //do we have to do the assignment here?
+	self = [self init];
+	return self;
+}
+
+\end{lstlisting}
+
+\subsubsection{Dynamic Binding}
+All object are allocated in the heap, so always use a pointer, id itself is a pointer.
+we can cast a pointer to any type and i will crash if it doesn't have the method we expected.
+
+\begin{lstlisting}
+ // call NSString's class method. not sure why Objective C don't just use the class name
+ if ([obj isKindOfClass:[NSString class]])
+\end{lstlisting}
+\subsubsection{Introsepction}
+Method testing
+\begin{lstlisting}
+if ([]obj responseToSelector:@selector(shoot)]) {
+	[obj shoot];
+}
+\end{lstlisting}
+SEL is type for selector
+
+\begin{lstlisting}
+SEL shootSelector = @selector(shoot);
+SEL moveToSelector = @selector(moveTo:withPenColor);
+[obj performSelector:shootSelector];
+[array makeObjectPerformSelector:shootAtSelector withObject:target];
+//in UIButton. 
+[button addTarget:self action:@selector(digitPressed:) ...];
+\end{lstlisting}
+
+\section{Foundation Framework}
+\subsection{NSObject}
+Base class for pretty much every object in the iOS SDK, implements introspection methods, etc.
+
+\subsection{NSString}
+Immutable! Unicode!
+
+\subsection{NSMutableString}
+mutable one still need to go to heap and allocating memories. and it's not optimized like immutable one. 
+
+\subsection{NSNumber}
+Object wrapper around primitive types like int, float, double etc. so we can throw them into collection(NSArray or NSDictionary)
+\begin{lstlisting}
+NSNumber *num = [NSNumber numberWithInt:36];
+\end{lstlisting}
+
+\subsection{NSValue}
+Generic object wrapper for other non-object data types. (c Struct)
+
+\subsection{NSData}
+"Bag of bits"
+
+\subsection{NSArray}
+Ordered collection of objects.
+Immutable. make sense because we don't wanna screw things up after give the pointer to others. 
+most language's array is mutable but we can use lock to make sure we don't change it when somebody else is changing it. 
+
+
+\subsection{NSMutableArray}
+
+\begin{lstlisting}
++(id) arrayWithCapacity:(int) initialSpace;
+-(id) copy;//returns an NSAarry.
+\end{lstlisting}
+\subsection{NSDictionary}
+Immutable hash table.
+
+\subsection{NSSet}
+set, unordered. i guess it's more efficient than c++'s set because that one use red-black tree.
+\begin{lstlisting}
+-(int) count;
+-(BOOL) containsObject:(id) anObject;
+-(id) anyObjects;
+-(void) makeObjectsPerformSelector:(SEL) aSelector;
+\end{lstlisting}
+
+\subsection{NSMutableSet}
+Mutable version of NSSet.
+
+
+\begin{lstlisting}
+- (void) addObject:(id) anObject;// does nothing if object that isEqual:anObject is already in 
+- (void) removeObject:(id) anObject.
+\end{lstlisting}
+
+\subsection{NSOrderedset}
+Immutable ordered collection of distinct object. 
+
+\subsection{NSMutableOrderedSet}
+Mutable version of NSOrderedSet
+
+\subsection{Enumeration}
+Looping through members of a collection in an efficient manner.
+\subsubsection{array}
+\begin{lstlisting}
+NSArray *myArray = [[NSArray alloc] init];
+for (NSString *string in myArray) { //no way for compiler to know what myArray contains
+	double value = [string doubleValue]; // crash here if string is not an NSString
+}
+\end{lstlisting}
+\subsubsection{dictionary}
+\begin{lstlisting}
+for (id key in myDictionary) {
+	id value = [myDictionary objectForKey:key];
+}
+\end{lstlisting}
+
+\subsection{Property List}
+A collection of collections. i think it simply has to have an order so we can read and write it to somewhere
+it is any graph of objects containing only the following classes:
+\begin{lstlisting}
+NSAarray, NSDictionary, NSNumber, NSString, NSDate, NSData.
+
+[plist writeToFile:(NSString *) path atomically:(BOOL)]; // plist is NSArray or NSDictionary
+\end{lstlisting}
+
+
+
+\subsection{NSUserDefaults}
+Lightweight storage of Property List.
+\begin{lstlisting}
+[[NSUserDefaults standardUserDefaults] setArray:rvArray forKey:@"RecentlyViewed"]
+\end{lstlisting}
+
+
+\subsection{Continue our example}
+We use a mutable array to save the operand and operators.
+\begin{lstlisting}
+@interface CalculatorBrain()
+@property (nonatomic, strong) NSMutableArray *programStack;
+@end
+\end{lstlisting}
+we push everything to the array, runProgram takes program/array as a parameter and creates an mutable copy from it. 
+\begin{lstlisting}
+- (void) pushOperand:(double) operand{
+    //boxing like java
+    [self.programStack addObject:[NSNumber numberWithDouble:operand]];
+}
+- (double) performOperation:(NSString *) operation{
+    [self.programStack addObject:operation];
+    return [CalculatorBrain runProgram:self.program];
+}
++(double)runProgram:(id)program{
+    NSMutableArray *stack;
+    if ([program isKindOfClass:[NSArray class]]) {
+        stack = [program mutableCopy];
+    }
+    return [self popOperandOffStack:stack];
+    
+}
+\end{lstlisting}
+calculate the result, each time we got the mutable array, we recursively call the popOperandOffStack to get the result.  drawback: we need to do the recursive call each time. so we recalculated lots of stuff. 
+\begin{lstlisting}
++(double) popOperandOffStack:(NSMutableArray *)stack {
+    double result = 0;
+    id topOfStack = [stack lastObject];
+    if (topOfStack) [stack removeLastObject];
+    if ([topOfStack isKindOfClass:[NSNumber class]]){
+        result = [topOfStack doubleValue];
+    } else if ([topOfStack isKindOfClass:[NSString class]]) {
+        NSString *operation = topOfStack;
+        if ([operation isEqualToString:@"+"]) {
+            result = [self popOperandOffStack:stack] + [self popOperandOffStack:stack];
+        } else if ([@"*" isEqualToString:operation]) {
+            result = [self popOperandOffStack:stack] * [self popOperandOffStack:stack];
+        }
+    }
+    
+    return result;
+}
+\end{lstlisting}
+\section{Views}
+A view i.e. UIView subclass, is an rectangle on the screen. a view has only one superview. but can have different number of subviews. 
+UIWindow is the UIView at the top of view hierarchy, only have one UIWindow in an iOS application.
+\begin{lstlisting}
+
+\end{lstlisting}
+\subsection{CGFloat, CGPoint,, CGSize, CGRect}
+Just a floating point number, always use it for graphics. 
+\begin{lstlisting}
+CGRect aRect = CGRectMake (4.5, 3.5, 3,3);
+aRect.size.height+=45;
+aRect.origin.x+=30;
+\end{lstlisting}
+
+\subsection{Coordinates}
+(0.0) is the upper left, Units are "points" not pixels. for portable reason.  UIView has a property to tell.
+\begin{lstlisting}
+@property CGFloat contentScaleFactor;//returns pixels per point on the screen this view is on
+\end{lstlisting}
+View has 3 properties about size and location
+\begin{lstlisting}
+@property CGRect bounds;// adjust itself on screen
+@property CGPoint center;// the center of your view in your superview's coord.
+@property CGRect frame;// a rectangle in your superview's coordinate space which entirely contains your view's bounds.size;
+\end{lstlisting}
+\subsection{Drawing is fun}
+Graphic is expensive, don't do premature optimization on other stuff as long as the code is clean;
+\begin{lstlisting}
+-(void) drawRect:(CGRect) aRect; // newer call drawRect;
+\end{lstlisting}
+We can use Core Graphics framework to implement drawRect. The API is C. 
+The context determines where your drawing goes.
+\begin{lstlisting}
+CGContextRef context = UIGraphicsGetCurrentContext();
+[[UIColor greenColor] setFill];
+[[UIColor redColor] setStroke];
+CGContextDrawPath(context, kCGPathFillStroke);//kCGPathFillStroke is a constant
+CGContextBeginPath(context);//Begin the path
+CGContextMoveToPoint(context, 7,5);
+CGContextAddLineToPoint(context, 1,2);
+CGContextClosePath(context);
+\end{lstlisting}
+we can build a path and reuse it later. CGPath.
+Transparency is not Cheap. we can use UIGraphicsPushContext(ctxt) and popContext to keep graphics state liner. 
+\subsection{Drawing Text}
+UILabel.
+UIFont can get a font. NSString are defined in UIKit via a mechanism called "categories".
+\begin{lstlisting}
+
+\end{lstlisting}
+\subsection{Drawing Image}
+Create a UIImage object from a file in your Resources folder
+\begin{lstlisting}
+UIImage *image = [UIImage imageNamed:@Òfoo.jpgÓ];
+\end{lstlisting}
+Or create one from a named file or from raw data
+\begin{lstlisting}
+UIImage *image = [[UIImage alloc] initWithContentsOfFile:(NSString *)fullPath];UIImage *image = [[UIImage alloc] initWithData:(NSData *)imageData];
+\end{lstlisting}
+\subsection{Enumeration}
+\begin{lstlisting}
+
+\end{lstlisting}
+\subsection{Enumeration}
+\begin{lstlisting}
+
+\end{lstlisting}
+\subsection{Enumeration}
+\begin{lstlisting}
+
+\end{lstlisting}
+
+
+
+\begin{lstlisting}
+\end{lstlisting}
+
+\subsection{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}  
