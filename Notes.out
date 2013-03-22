@@ -36,7 +36,15 @@
 \BOOKMARK [2][-]{subsection.5.3}{Drawing is fun}{section.5}% 36
 \BOOKMARK [2][-]{subsection.5.4}{Drawing Text}{section.5}% 37
 \BOOKMARK [2][-]{subsection.5.5}{Drawing Image}{section.5}% 38
-\BOOKMARK [2][-]{subsection.5.6}{Enumeration}{section.5}% 39
-\BOOKMARK [2][-]{subsection.5.7}{Enumeration}{section.5}% 40
-\BOOKMARK [2][-]{subsection.5.8}{Enumeration}{section.5}% 41
-\BOOKMARK [2][-]{subsection.5.9}{}{section.5}% 42
+\BOOKMARK [1][-]{section.6}{Debugging}{}% 39
+\BOOKMARK [2][-]{subsection.6.1}{gdb}{section.6}% 40
+\BOOKMARK [1][-]{section.7}{Protocols}{}% 41
+\BOOKMARK [2][-]{subsection.7.1}{Basic}{section.7}% 42
+\BOOKMARK [2][-]{subsection.7.2}{Why}{section.7}% 43
+\BOOKMARK [1][-]{section.8}{UIGestureRecognizer}{}% 44
+\BOOKMARK [2][-]{subsection.8.1}{adding}{section.8}% 45
+\BOOKMARK [2][-]{subsection.8.2}{Enumeration}{section.8}% 46
+\BOOKMARK [2][-]{subsection.8.3}{Enumeration}{section.8}% 47
+\BOOKMARK [2][-]{subsection.8.4}{Enumeration}{section.8}% 48
+\BOOKMARK [2][-]{subsection.8.5}{Enumeration}{section.8}% 49
+\BOOKMARK [2][-]{subsection.8.6}{}{section.8}% 50

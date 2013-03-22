@@ -23,7 +23,6 @@
         _brain = [[CalculatorBrain alloc] init];
     }
     return _brain;
-    
 }
 
 //IBAcion is actually void, id is a pointer to unknow class of object

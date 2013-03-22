@@ -500,8 +500,54 @@ UIImage *image = [UIImage imageNamed:@“foo.jpg”];
 \end{lstlisting}
 Or create one from a named file or from raw data
 \begin{lstlisting}
-UIImage *image = [[UIImage alloc] initWithContentsOfFile:(NSString *)fullPath];UIImage *image = [[UIImage alloc] initWithData:(NSData *)imageData];
+UIImage *image = [[UIImage alloc] initWithContentsOfFile:(NSString *)fullPath];
+UIImage *image = [[UIImage alloc] initWithData:(NSData *)imageData];
 \end{lstlisting}
+
+\section{Debugging}
+\subsection{gdb}
+\begin{lstlisting}
+gdb print [self operand]
+gdb print self
+\end{lstlisting}
+we can overwrite the description, so the print self will print that string.
+
+\section{Protocols}
+Protocols is actually interfaces in other languages, and "interface" in Objective C is "public.
+\subsection{Basic}
+\begin{lstlisting}
+@protocol Foo <Other, NSObject> // implementors must implement Other and NSObject too- (void)doSomething; // implementors must implement this (methods are @required by default) @optional- (int)getSomething; // implementors do not have to implement this- (void)doSomethingOptionalWithArgument:(NSString *)argument; // also optional@required- (NSArray *)getManySomethings:(int)howMany; // back to being “must implement” 
+@property (nonatomic, strong) NSString *fooProp; // note that you must specify strength
+@end				// (unless it’s readonly, of course)
+\end{lstlisting}
+\subsection{Why}
+Number 1 use of protocols in iOS: delegates and  sources, This assumes that the object serving as delegate will outlive the object doing the delegating. Especially true in the case where the delegator is a View object
+
+\section{UIGestureRecognizer}
+There are two sides to using a gesture recognizer1. Adding a gesture recognizer to a UIView to ask it to recognize that gesture.2. Providing the implementation of a method to “handle” that gesture when it happens.
+\begin{lstlisting}
+
+\end{lstlisting}
+\subsection{adding}
+Adding a gesture recognizer to a UIView from a Controller
+\begin{lstlisting}
+ - (void)setPannableView:(UIView *)pannableView      {          _pannableView = pannableView;          UIPanGestureRecognizer *pangr =              [[UIPanGestureRecognizer alloc] initWithTarget:pannableView action:@selector(pan:)];          [pannableView addGestureRecognizer:pangr];}
+\end{lstlisting}
+
+
+\begin{lstlisting}
+- (void)pan:(UIPanGestureRecognizer *)recognizer{if ((recognizer.state == UIGestureRecognizerStateChanged) ||	(recognizer.state == UIGestureRecognizerStateEnded)) {	CGPoint translation = [recognizer translationInView:self];
+	@property called origin self.origin = CGPointMake(self.origin.x+translation.x, self.origin.y		+translation.y); 
+	[recognizer setTranslation:CGPointZero inView:self];
+	} 
+}
+\end{lstlisting}
+\subsection{Enumeration}
+\begin{lstlisting}
+
+\end{lstlisting}
+
+
 \subsection{Enumeration}
 \begin{lstlisting}
 
@@ -514,9 +560,6 @@ UIImage *image = [[UIImage alloc] initWithContentsOfFile:(NSString *)fullPath];
 \begin{lstlisting}
 
 \end{lstlisting}
-
-
-
 \begin{lstlisting}
 \end{lstlisting}
 
